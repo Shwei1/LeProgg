@@ -16,7 +16,12 @@ if key == 1:
             triangle.__init__(x1, y1, x2, y2)
             triangle.cleaner()
 elif key == 2:
-    pass
+    while True:
+        triangle.draw()
+        triangle.set_distortion(1.05, 1.05)
+        (x1, y1), (x2, y2) = triangle.stretched_vertices()
+        triangle.__init__(x1, y1, x2, y2)
+        triangle.cleaner()
 
 tkinter.mainloop()
 

@@ -31,7 +31,11 @@ class Triangle:
                           sin(self.__angle) * (self.__vertex2[0] - self.__position[0]) + cos(self.__angle) * (self.__vertex2[1] - self.__position[1]) + self.__position[1]]
         return self.__vertex1, self.__vertex2
 
+    def stretched_vertices(self):
+        self.__vertex1 = [self.__position[0] + (self.__vertex1[0] - self.__position[0]) * self.__dist_x, self.__position[1] + (self.__vertex1[1] - self.__position[1]) * self.__dist_y]
 
+        self.__vertex2 = [self.__position[0] + (self.__vertex2[0] - self.__position[0]) * self.__dist_x, self.__position[1] + (self.__vertex2[1] - self.__position[1]) * self.__dist_y]
+        return self.__vertex1, self.__vertex2
 
     def draw(self):
         speed(0)
@@ -48,6 +52,7 @@ class Triangle:
 
     def cleaner(self):
         clear()
+
 
 
 
