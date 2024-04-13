@@ -25,10 +25,10 @@ class Triangle:
 
     def rotated_vertices(self):
         self.__angle = radians(self.__angle)
-        self.__vertex1 = [cos(self.__angle) * (self.__vertex1[0] - self.__position[0]) - sin(self.__angle) * (self.__vertex1[1] - self.__position[1]) + self.__position[0],
-                          sin(self.__angle) * (self.__vertex1[0] - self.__position[0]) + cos(self.__angle) * (self.__vertex1[1] - self.__position[1]) + self.__position[1]]
-        self.__vertex2 = [cos(self.__angle) * (self.__vertex2[0] - self.__position[0]) - sin(self.__angle) * (self.__vertex2[1] - self.__position[1]) + self.__position[0],
-                          sin(self.__angle) * (self.__vertex2[0] - self.__position[0]) + cos(self.__angle) * (self.__vertex2[1] - self.__position[1]) + self.__position[1]]
+        self.__vertex1 = [cos(self.__angle) * (self.__vertex1[0] - self.__pivot[0]) - sin(self.__angle) * (self.__vertex1[1] - self.__pivot[1]) + self.__pivot[0],
+                          sin(self.__angle) * (self.__vertex1[0] - self.__pivot[0]) + cos(self.__angle) * (self.__vertex1[1] - self.__pivot[1]) + self.__pivot[1]]
+        self.__vertex2 = [cos(self.__angle) * (self.__vertex2[0] - self.__pivot[0]) - sin(self.__angle) * (self.__vertex2[1] - self.__pivot[1]) + self.__pivot[0],
+                          sin(self.__angle) * (self.__vertex2[0] - self.__pivot[0]) + cos(self.__angle) * (self.__vertex2[1] - self.__pivot[1]) + self.__pivot[1]]
         return self.__vertex1, self.__vertex2
 
     def stretched_vertices(self):
@@ -36,6 +36,12 @@ class Triangle:
 
         self.__vertex2 = [self.__position[0] + (self.__vertex2[0] - self.__position[0]) * self.__dist_x, self.__position[1] + (self.__vertex2[1] - self.__position[1]) * self.__dist_y]
         return self.__vertex1, self.__vertex2
+
+    def set_pivot(self, pivot_x, pivot_y):
+        self.__pivot = (pivot_x, pivot_y)
+
+    def position_to_pivot(self):
+        self.__pivot = (self.__position[0], self.__position[0])
 
     def draw(self):
         speed(0)
