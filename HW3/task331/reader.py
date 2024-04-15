@@ -21,44 +21,48 @@ class Output:
                 if key == "Triangle":
                     f = Triangle(*value)
                     figurines.append(f)
-                if key == "Circle":
+                elif key == "Circle":
                     f = Circle(*value)
-                if key == "Rectangle":
+                    figurines.append(f)
+                elif key == "Rectangle":
                     f = Rectangle(*value)
                     figurines.append(f)
-                if key == "Trapeze":
+                elif key == "Trapeze":
                     f = Trapezium(*value)
                     figurines.append(f)
-                if key == "Parallelogram":
+                elif key == "Parallelogram":
                     f = Parallelogram(*value)
                     figurines.append(f)
-                if key == "Ball":
+                elif key == "Ball":
                     f = Sphere(*value)
                     figurines.append(f)
-                if key == "TriangularPyramid":
+                elif key == "TriangularPyramid":
                     f = Tetrahedron(*value)
                     figurines.append(f)
-                if key == "QuadrangularPyramid":
+                elif key == "QuadrangularPyramid":
                     f = QuadraticPyramid(*value)
                     figurines.append(f)
-                if key == "TriangularPrism":
+                elif key == "TriangularPrism":
                     f = TriangularPrism(*value)
                     figurines.append(f)
-                if key == "RectangularParallelepiped":
+                elif key == "RectangularParallelepiped":
                     f = RectangularParallelepiped(*value)
                     figurines.append(f)
-                if key == "Cone":
+                else:
                     f = Cone(*value)
                     figurines.append(f)
         except(ValueError, AssertionError):
-            figurines.append(f"Broken figure {key}")
+            pass
         return figurines
 
     def measure_finder(self):
         figurines = self.initialiser()
         volumes = []
-        for figurine in figurines:
-            volumes.append(figurine.volume())
+        try:
+            for figurine in figurines:
+                volumes.append(figurine.volume())
+        except(ValueError, AssertionError):
+            volumes.append(0)
         return volumes
 
     def largest_measure(self):
@@ -73,6 +77,10 @@ class Output:
             pass
         return largest_figurine
 
+    def output(self, outfile):
+        with open(outfile, "wt") as of:
+            print(
+                f"The figure with the largest measure in {self.filename} is {self.largest_measure()} with volume of {self.largest_measure().volume()}", file=of)
 
 
 
