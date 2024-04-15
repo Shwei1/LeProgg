@@ -1,4 +1,4 @@
-from classes_321 import *
+from HW3.task321.classes_321 import *
 
 
 class Output():

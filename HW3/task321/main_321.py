@@ -1,4 +1,4 @@
-from eqreader import Output
+from HW3.task321.eqreader import Output
 
 files = ("input01.txt", "input02.txt", "input03.txt")
 
